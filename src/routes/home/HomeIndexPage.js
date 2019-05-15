@@ -3,6 +3,7 @@ import { connect } from 'dva';
 import styles from './HomeIndexPage.css';
 import RightContent from '../../components/homeComponents/RightContent'
 import LeftMenu from '../../components/homeComponents/LeftMenu'
+import RightHead from '../../components/homeComponents/RightHead'
 import {Layout, Menu, Breadcrumb, Icon } from 'antd';
 import { useState } from 'react';
 
@@ -12,20 +13,21 @@ const SubMenu = Menu.SubMenu;
 
 function HomeIndexPage({dispatch}) {
   const [collapsed, onCollapse] = useState(false);  
+  let _props = {
+    collapsed,
+    onCollapse
+  }
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
+    {/* 左边栏 */}
     <Sider trigger={null} collapsible  collapsed={collapsed}>
-      <div className={styles.logo} />
+      <div className={styles.logo} >{collapsed ? '' :"运维管理系统"}</div>
       <LeftMenu></LeftMenu>
     </Sider>
     <Layout>
-    <Header style={{ background: '#fff', padding: 0 }}>
-            <Icon
-              className="trigger"
-              type={collapsed ? 'menu-unfold' : 'menu-fold'}
-              onClick={()=>onCollapse( !collapsed)}
-            />
-          </Header>
+      {/* 右上 */}
+    <RightHead {..._props}/>
       <Content style={{ margin: '0 16px' }}>
         <Breadcrumb style={{ margin: '16px 0' }}>
           <Breadcrumb.Item>User</Breadcrumb.Item>
