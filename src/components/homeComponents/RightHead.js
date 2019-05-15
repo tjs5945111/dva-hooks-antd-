@@ -4,8 +4,9 @@ import back from '../../assets/images/back.svg'
 
 const { Header} = Layout;
 const RightHead = (props) => {
-  //接收父组件传递的参数及及时间
- const {collapsed,onCollapse}=props
+    const {collapsed,onCollapse,keyss,clickTab}=props
+    // console.log(collapsed)
+    // console.log(keyss)
   return (
     <Header style={{ background: '#fff', paddingLeft:20,paddingRight:20,height:"56px"}}>
     <Icon
@@ -21,8 +22,10 @@ const RightHead = (props) => {
                 </div>
                 <Menu theme='light'
                     mode='horizontal'
-                    defaultSelectedKeys={['pc']}
-                    // onClick={this.props.clickTab.bind(this)}
+                    //默认选中状态
+                    defaultSelectedKeys={keyss}
+                    //子组件向父组件传参（通过父组件定义事件传递）
+                    onClick={(e)=>clickTab(e.key)}
                     style={{position:"relative",top:"-56px",width:"950px",left:"30px"}}
                 >
                     <Menu.Item key='pc'>
@@ -32,7 +35,7 @@ const RightHead = (props) => {
                         <Icon type='mobile' /><span>移动</span>
                     </Menu.Item>
                 </Menu>
-  </Header>
+        </Header>
     
   );
 

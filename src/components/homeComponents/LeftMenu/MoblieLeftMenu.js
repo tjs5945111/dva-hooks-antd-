@@ -7,7 +7,7 @@ const {Sider} = Layout;
 const SubMenu = Menu.SubMenu;
 
 const MoblieLeftMenu = (props) => {
-  const {collapsed,onCollapse}=props
+  const {collapsed}=props
   return (
     <Sider trigger={null} collapsible  collapsed={collapsed}  >
     <div style={{ color:'#fff',textAlign:'center',padding:"3px",fontSize:"18px"}} >{collapsed ? '' :"运维管理系统"}</div>
