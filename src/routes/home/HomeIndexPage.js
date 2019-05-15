@@ -1,14 +1,10 @@
 import React from 'react';
 import { connect } from 'dva';
-import styles from './HomeIndexPage.css';
-import RightContent from '../../components/homeComponents/RightContent'
+import RightContent from '../../components/homeComponents/RightContent/RightContent'
 import LeftMenu from '../../components/homeComponents/LeftMenu'
 import RightHead from '../../components/homeComponents/RightHead'
-import {Layout, Menu, Breadcrumb, Icon } from 'antd';
+import {Layout} from 'antd';
 import { useState } from 'react';
-
-const { Header, Content, Footer, Sider } = Layout;
-const SubMenu = Menu.SubMenu;
 
 
 function HomeIndexPage({dispatch}) {
@@ -21,21 +17,11 @@ function HomeIndexPage({dispatch}) {
   return (
     <Layout style={{ minHeight: '100vh' }}>
     {/* 左边栏 */}
-    <Sider trigger={null} collapsible  collapsed={collapsed}>
-      <div className={styles.logo} >{collapsed ? '' :"运维管理系统"}</div>
-      <LeftMenu></LeftMenu>
-    </Sider>
+      <LeftMenu {..._props}></LeftMenu>
     <Layout>
       {/* 右上 */}
     <RightHead {..._props}/>
-      <Content style={{ margin: '0 16px' }}>
-        <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item>User</Breadcrumb.Item>
-          <Breadcrumb.Item>Bill</Breadcrumb.Item>
-        </Breadcrumb>
-        <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>Bill is a cat.</div>
-      </Content>
-      <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+     <RightContent></RightContent>
     </Layout>
   </Layout>
   )

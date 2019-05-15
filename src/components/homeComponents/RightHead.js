@@ -1,6 +1,6 @@
 import React from 'react';
 import {Layout, Icon,Menu } from 'antd';
-import back from './back.svg'
+import back from '../../assets/images/back.svg'
 
 const { Header} = Layout;
 const RightHead = (props) => {

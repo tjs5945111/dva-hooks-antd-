@@ -1,13 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Icon } from 'antd';
+import { Layout,Menu, Icon } from 'antd';
 import {connect} from 'dva';
 
+const {Sider} = Layout;
 const SubMenu = Menu.SubMenu;
+
 const LeftMenu = (props) => {
-  
+  const {collapsed,onCollapse}=props
   return (
-    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+    <Sider trigger={null} collapsible  collapsed={collapsed}  >
+    <div style={{ color:'#fff',textAlign:'center',padding:"3px",fontSize:"18px"}} >{collapsed ? '' :"运维管理系统"}</div>
+    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" >
       <SubMenu
         key='/pc/source'
         title={<span><Icon type="file" /><span className="nav-text">资源管理</span></span>}
@@ -61,7 +65,10 @@ const LeftMenu = (props) => {
         </Menu.Item>
     </SubMenu>
     {/*{this.getIndicatorSider()}*/}
-</Menu> );
+</Menu> 
+</Sider>
+
+);
 
 };
 
