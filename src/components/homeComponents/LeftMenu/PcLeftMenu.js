@@ -2,16 +2,26 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Layout,Menu, Icon } from 'antd';
 import {connect} from 'dva';
+import { useState } from 'react';
 
 const {Sider} = Layout;
 const SubMenu = Menu.SubMenu;
 
 const PcLeftMenu = (props) => {
+    const [selectedKey, onClick] = useState([]);
+    const [openKey, openChange] = useState([]);
   const {collapsed}=props
   return (
     <Sider trigger={null} collapsible  collapsed={collapsed}  >
     <div style={{ color:'#fff',textAlign:'center',padding:"3px",fontSize:"18px"}} >{collapsed ? '' :"运维管理系统"}</div>
-    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" >
+    <Menu 
+     theme="dark"
+     mode="inline" 
+     defaultSelectedKeys={selectedKey}
+    //  defaultOpenKeys={this.state.openKey}
+     onClick={(e)=>onClick("e.key")}
+    //  onOpenChange={this.openChange.bind(this)}
+     >
       <SubMenu
         key='/pc/source'
         title={<span><Icon type="file" /><span className="nav-text">资源管理</span></span>}

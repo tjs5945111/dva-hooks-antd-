@@ -8,13 +8,13 @@ function IndexPage({dispatch,form: { getFieldDecorator, validateFields }}) {
   function handleSubmit(e) {
     e.preventDefault()
     validateFields((err, values) => {
-        console.log(values)
-        // if (!err) {
-        //     dispatch({
-        //         type: 'login/checkLogin',
-        //         payload: values
-        //     })
-        // }
+        console.log(err)
+        if (!err) {
+            dispatch({
+                type: 'login/checkLogin',
+                payload: values
+            })
+        }
     })
 }
   return (
